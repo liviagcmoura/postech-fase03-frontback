@@ -2,6 +2,17 @@ import { useState } from 'react';
 import './Login.css'; 
 import Logo from '../../components/Logo';
 
+const decodeJWT = (token) => {
+  try {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    return JSON.parse(atob(base64));
+  } catch (error) {
+    console.error('Erro ao decodificar token:', error);
+    return null;
+  }
+};
+
 function Login() {
   const [nome, setNome] = useState('');
   const [password, setPassword] = useState('');
@@ -16,11 +27,15 @@ function Login() {
         body: JSON.stringify({ nome, password }),
       });
       const data = await response.json();
+
       if (response.ok) {
         localStorage.setItem('token', data.token);
-        window.location.href = '/';
+        const decodedToken = decodeJWT(data.token);
+        const userRole =  decodedToken?.role;
+
+        window.location.href = userRole === 'Aluno' ? '/alunos' : '/';
       } else {
-        setError(data.message || 'Erro no login');
+        setError(data.message || 'Nome de usuário ou senha incorretos. Tente novamente.');
       }
     } catch (err) {
       setError('Falha na conexão');
