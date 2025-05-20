@@ -53,7 +53,7 @@ function Home() {
            <Aulas>
               <div>
                 <p>{aula.titulo}</p>
-                <p>{aula.conteudo}</p>
+                <p>{aula.disciplina}</p>
                 <p>{aula.autor.nome}</p>
               </div>
             </Aulas>

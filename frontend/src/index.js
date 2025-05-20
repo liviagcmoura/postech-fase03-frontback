@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { createGlobalStyle } from 'styled-components';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Login from './rotas/Login/Login.js';
+import Admin from './rotas/Admin.js';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -40,7 +41,8 @@ root.render(
         <Route path="/login" element={<Login />} />
         <Route path="/perfil" element ={<Perfil/>} />
         <Route path="/sair" element ={<h1>Você fez logout do blog da Escola Avanço!</h1>} />
-        <Route  path="/alunos" element={<HomeAlunos />} />
+        <Route path="/alunos" element={<HomeAlunos />} />
+        <Route path="/admin" element={<Admin /> } />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
