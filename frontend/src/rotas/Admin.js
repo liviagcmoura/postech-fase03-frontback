@@ -6,6 +6,7 @@ import HeaderAdmin from "../components/HeaderAdmin";
 import BotaoEditar from "../components/BotaoEditar";
 import BotaoDeletar from "../components/BotaoDeletar";
 import { Link } from "react-router-dom";
+import ModalAula from "../components/AulaModal";
 
 const AppContainer = styled.div`
   width: 100vw;
@@ -46,12 +47,6 @@ const TituloAdmin = styled.h2`
   width: 100%;
 `;
 
-// const LinkNovaAula = styled.link`
-//   font-size: 20px;
-//   font-weight: 400;
-//   margin-bottom: 40px;
-// `;
-
 function Admin() {
   const [aulas, setAulas] = useState([]);
   useEffect(() => {
@@ -63,55 +58,73 @@ function Admin() {
     setAulas(aulasDaAPI);
   }
 
-    // Funções de manipulação (handlers)
   const handleEdit = (aulaId) => {
     console.log('Editar aula:', aulaId);
-    // Adicione sua lógica de edição aqui (ex: abrir um modal, redirecionar, etc.)
+    // Adicione lógica de edição aqui 
   };
 
   const handleDelete = (aulaId) => {
     console.log('Deletar aula:', aulaId);
-    // Adicione sua lógica de exclusão aqui (ex: chamar API, atualizar estado, etc.)
-    // Exemplo com confirmação:
-    if (window.confirm('Tem certeza que deseja excluir esta aula?')) {
-      // Lógica para deletar (ex: chamar API e atualizar `aulas`)
-      // setAulas(aulas.filter(aula => aula.id !== aulaId));
+    // Adicione lógica de exclusão aqui
+       if (window.confirm('Tem certeza que deseja excluir esta aula?')) {
+      // Lógica para deletar 
     }
   };
 
+  const [selectedAula, setSelectedAula] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const token = localStorage.getItem('token') || null;
 
-return (
-  <AppContainer>
-    <HeaderAdmin />
+  const handleAulaClick = (aula) => {
+    setSelectedAula(aula);
+    setIsModalOpen(true);
+  };
 
-    <NovaAulaContainer>
-      <TituloAdmin>Olá, prof!</TituloAdmin>
-      <Link to="/postar">Postar nova aula</Link>
-    </NovaAulaContainer>
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedAula(null);
+  };
 
-    <Titulo>TODAS AS AULAS</Titulo>
-    {token
-      ? aulas.map((aula) => {
-          console.log(aula);
-          return (
-            <Aulas key={aula.id}> 
+  return (
+    <AppContainer>
+      <HeaderAdmin />
+
+      <NovaAulaContainer>
+        <TituloAdmin>Olá, prof!</TituloAdmin>
+        <Link to="/postar">Postar nova aula</Link>
+      </NovaAulaContainer>
+
+      <Titulo>TODAS AS AULAS</Titulo>
+      {token
+        ? aulas.map((aula) => (
+            <Aulas 
+              key={aula.id}
+              onClick={() => handleAulaClick(aula)}
+              style={{ cursor: 'pointer' }}
+            >
               <div>
-                <p>{aula.titulo}</p> 
+                <p>{aula.titulo}</p>
                 <p>{aula.disciplina}</p>
                 <p>{aula.autor.nome}</p>
-                
+                              
                 <div style={{ display: 'flex', gap: '8px', marginTop: '12px' }}>
                   <BotaoEditar onClick={() => handleEdit(aula.id)} />
                   <BotaoDeletar onClick={() => handleDelete(aula.id)} />
                 </div>
               </div>
             </Aulas>
-          );
-        })
-      : <p>Por favor, faça login</p>}
-  </AppContainer>
-);
-}
+          ))
+        : <p>Por favor, faça login</p>
+      }
 
+      {isModalOpen && (
+        <ModalAula 
+          aula={selectedAula} 
+          onClose={handleCloseModal} 
+        />
+      )}
+    </AppContainer>
+  );
+}
 export default Admin;

@@ -4,6 +4,7 @@ import { getAulasPrincipais } from "../servicos/Aulas";
 import { useEffect, useState } from "react";
 import { Titulo } from "../components/Titulo";
 import Header from "../components/Header"
+import ModalAula from "../components/AulaModal";
 
 const AppContainer = styled.div`
   width: 100vw;
@@ -39,7 +40,20 @@ function HomeAlunos() {
     setAulas(aulasDaAPI);
   }
 
+  const [selectedAula, setSelectedAula] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const token = localStorage.getItem('token') || null;
+
+  const handleAulaClick = (aula) => {
+    setSelectedAula(aula);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedAula(null);
+  };
 
   return (
     <AppContainer>
@@ -47,20 +61,27 @@ function HomeAlunos() {
       <Pesquisa />
       <Titulo>AULAS RECENTES</Titulo>
       {token 
-        ? aulas.map((aula) => {
-          console.log(aula)
-          return (
-           <Aulas>
+        ? aulas.map((aula) => (
+            <Aulas 
+              key={aula.id}
+              onClick={() => handleAulaClick(aula)}
+              style={{ cursor: 'pointer' }}
+            >
               <div>
                 <p>{aula.titulo}</p>
                 <p>{aula.disciplina}</p>
                 <p>{aula.autor.nome}</p>
               </div>
             </Aulas>
-          )
-        }
-      )
-        : "Por favor, faça login"}
+          ))
+        : <p>Por favor, faça login</p>}
+        
+        {isModalOpen && (
+        <ModalAula 
+          aula={selectedAula} 
+          onClose={handleCloseModal} 
+        />
+        )}
     </AppContainer>
   );
 }

@@ -100,8 +100,7 @@ class AulaController {
         .sort({ _id: -1 })
         .skip((pagina - 1) * limite)
         .limit(limite)
-        .select('titulo disciplina autor.nome');
-
+        
       res.status(200).json(listaAulas);
     } catch (erro) {
       res
