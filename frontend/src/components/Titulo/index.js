@@ -5,7 +5,7 @@ export const Titulo = styled.h2`
     padding: 30px 0;
     background-color: rgb(247, 221, 234);
     color:rgb(94, 8, 51);
-    font-size: 36px;
+    font-size: 20px;
     text-align: center;
     margin: 0;
 `

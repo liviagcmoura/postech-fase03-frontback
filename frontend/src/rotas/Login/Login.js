@@ -30,8 +30,10 @@ function Login() {
 
       if (response.ok) {
         localStorage.setItem('token', data.token);
+        localStorage.setItem('id', data.id);
         const decodedToken = decodeJWT(data.token);
         const userRole =  decodedToken?.role;
+      
 
         window.location.href = userRole === 'Aluno' ? '/alunos' : '/';
       } else {

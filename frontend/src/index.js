@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './rotas/Home';
 import HomeAlunos from './rotas/HomeAlunos.js';
 import Perfil from './rotas/Perfil';
-import reportWebVitals from './reportWebVitals';
-import { createGlobalStyle } from 'styled-components';
-import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Login from './rotas/Login/Login.js';
 import Admin from './rotas/Admin.js';
+import reportWebVitals from './reportWebVitals';
+import { createGlobalStyle } from 'styled-components';
+import PrivateRoute from './rotas/PrivateRoute.js';
+import Logout from './rotas/Logout';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -27,28 +29,51 @@ const GlobalStyle = createGlobalStyle`
   li {
     list-style: none;
   }
-`
+`;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
-  <React.StrictMode>
-    <GlobalStyle />
+<React.StrictMode>
+  <GlobalStyle />
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/aula" element={<p>Aula</p>} />
-        <Route path="/editar" element={<p>Editar aula</p>} />
         <Route path="/login" element={<Login />} />
-        <Route path="/perfil" element ={<Perfil/>} />
-        <Route path="/sair" element ={<h1>Você fez logout do blog da Escola Avanço!</h1>} />
-        <Route path="/alunos" element={<HomeAlunos />} />
-        <Route path="/admin" element={<Admin /> } />
+        <Route path="/sair" element={<Logout />} />
+
+        <Route path="/unauthorized" element={<h1>Acesso não autorizado</h1>} />
+
+        <Route path="/" element={
+          <PrivateRoute allowedRoles={['Professor', 'Aluno']}>
+            <Home />
+          </PrivateRoute>
+        } />
+
+          <Route path="/home" element={
+          <PrivateRoute allowedRoles={['Professor', 'Aluno']}>
+            <Home />
+          </PrivateRoute>
+        } />
+
+        <Route path="/alunos" element={
+          <PrivateRoute allowedRoles={['Aluno']}>
+            <HomeAlunos />
+          </PrivateRoute>
+        } />
+
+        <Route path="/admin" element={
+          <PrivateRoute allowedRoles={['Professor']}>
+            <Admin />
+          </PrivateRoute>
+        } />
+        <Route path="/perfil" element={
+          <PrivateRoute allowedRoles={['Professor', 'Aluno']}>
+            <Perfil />
+          </PrivateRoute>
+        } />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
