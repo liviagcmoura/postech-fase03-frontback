@@ -2,11 +2,12 @@ import styled from 'styled-components';
 import Logo from '../Logo';
 import MenuHeaderAdmin from '../MenuHeaderAdmin'
 import { Link } from 'react-router-dom';
+import BotaoLogout from '../BotaoSair/BotaoSair';
 
 const HeaderContainer = styled.header`
-    background-color: #efe1e1;
+    background-color:rgb(25, 20, 23);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 `
 
@@ -17,6 +18,7 @@ function HeaderAdmin() {
                 <Logo/>
             </Link>
             <MenuHeaderAdmin/>
+            <BotaoLogout />
         </HeaderContainer>
     )
 }
