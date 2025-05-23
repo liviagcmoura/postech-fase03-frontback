@@ -40,10 +40,13 @@ const Aulas = styled.div`
 const NovaAulaContainer = styled.section`
   background-image: linear-gradient(90deg, rgb(82, 0, 51) 35%, #326589 165%);
   color: #fff;
-  text-align: center;
   padding: 15px 0;
   height: 150px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
 `;
 
 const TituloAdmin = styled.h2`
@@ -116,7 +119,6 @@ const handleEdit = (aulaId) => {
     setAulaParaEditar(aulaSelecionada);
     setIsEditing(true);
   }
-    // Adicione lógica de edição aqui 
 };
 
 const handleDelete = (aulaId) => {
@@ -184,8 +186,8 @@ return (
   <AppContainer>
     <HeaderAdmin />
       <NovaAulaContainer>
-        <TituloAdmin>Olá,{usuarioRole}  {usuarioNome}</TituloAdmin>
-          <div style={{ display: 'flex', gap: '8px', marginTop: '12px' }}>
+        <TituloAdmin>Olá, {usuarioRole} {usuarioNome}</TituloAdmin>
+          <div style={{ gap: '8px', marginTop: '12px', justifyContent: 'center'}}>
             <BotaoCriar onClick={handleCreate}></BotaoCriar>
           </div>
       </NovaAulaContainer>
@@ -196,10 +198,10 @@ return (
               <Aulas key={aula._id || aula.id} index={index}>
               <div>
                <div>
-                  <span> <label style={{color:'white'}}>Título:     </label> <p style={{color : 'white'}}>{aula.titulo}</p></span>
-                  <span> <label style={{color:'white'}}>Disciplina: </label> <p style={{color : 'white'}}>{aula.disciplina}</p></span>
-                  <span> <label style={{color:'white'}}>Autor:      </label> <p style={{color : 'white'}}>{aula.autor.nome}</p></span>
-                </div>
+                   <p style={{ color: "white" }}><strong>Título:</strong> {aula.titulo}</p>
+                  <p style={{ color: "white" }}><strong>Disciplina:</strong> {aula.disciplina}</p>
+                  <p style={{ color: "white" }}><strong>Autor:</strong> {aula.autor.nome}</p>
+              </div>
                               
                 <div style={{ display: 'flex', gap: '8px', marginTop: '12px' }}>
                   <BotaoDetalhar onClick={() => handleAulaClick(aula)} style={{ cursor: 'pointer' }}>

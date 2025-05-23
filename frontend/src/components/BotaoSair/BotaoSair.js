@@ -6,7 +6,7 @@ const BotaoLogout = () => {
 
 const Botao = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
   height: 100%;
   padding: 0 5px;
@@ -15,16 +15,16 @@ const Botao = styled.div`
 `;
 
 const LinkButton = styled.button`
-    display: flex;
-    justify-content: space-between;
+    // display: flex;
+    justify-content: right;
     align-items: center;
     background: none;
     padding: 0;
     margin: 0;
     border: none;
-    color: white  ;
+    color: red;
     font-size: 16px;
-    text-decoration: underline;
+    text-decoration: none;
     cursor: pointer;
     font-family: inherit;
 `;
@@ -34,10 +34,10 @@ const LinkButton = styled.button`
   };
 
   return    (   
-            <Botao>
-                <LinkButton onClick={sair}>Sair</LinkButton>
-            </Botao>
-            );
+      <Botao>
+          <LinkButton onClick={sair}><strong>Sair</strong></LinkButton>
+      </Botao>
+  );
 };
 
 export default BotaoLogout;

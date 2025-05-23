@@ -111,9 +111,9 @@ function Home() {
           ? listaParaExibir.map((aula, index) => (
               <Aulas key={aula._id || aula.id} index={index}>
                 <div>
-                  <p style={{ color: "white" }}>Título: {aula.titulo}</p>
-                  <p style={{ color: "white" }}>Disciplina: {aula.disciplina}</p>
-                  <p style={{ color: "white" }}>Autor: {aula.autor.nome}</p>
+                  <p style={{ color: "white" }}><strong>Título:</strong> {aula.titulo}</p>
+                  <p style={{ color: "white" }}><strong>Disciplina:</strong> {aula.disciplina}</p>
+                  <p style={{ color: "white" }}><strong>Autor:</strong> {aula.autor.nome}</p>
                   <div style={{ display: "flex", gap: "8px", marginTop: "12px" }}>
                     <BotaoDetalhar onClick={() => handleAulaClick(aula)} />
                   </div>

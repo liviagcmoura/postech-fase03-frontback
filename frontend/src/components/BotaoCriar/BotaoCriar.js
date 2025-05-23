@@ -35,7 +35,7 @@ const BotaoCriar = ({ onClick }) => {
   return (
     <BotaoCriarContainer onClick={onClick}>
       <CriarIcone />
-        Adicionar Aula
+        Postar Aula
     </BotaoCriarContainer>
   );
 };

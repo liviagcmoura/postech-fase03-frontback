@@ -13,14 +13,14 @@ const OpcoesMenu = styled.ul`
 const OpcaoMenu = styled.li`
   font-size: 16px;
   display: flex;
-  align-items: center;
+  align-items: right;
   height: 100%;
   padding: 0 10px;
   cursor: pointer;
   min-width: 120px;
 
   a {
-    color: white;
+    color: purple;
     text-decoration: none;
     width: 100%;
     text-align: center;
@@ -28,7 +28,7 @@ const OpcaoMenu = styled.li`
 
 `;
 
-const textoOpcoes = ['Home','Admin']
+const textoOpcoes = ['Admin']
 
 function MenuHeader() {
   return (

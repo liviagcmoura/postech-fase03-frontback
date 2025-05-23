@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './rotas/Home';
 import HomeAlunos from './rotas/HomeAlunos.js';
-import Perfil from './rotas/Perfil';
 import Login from './rotas/Login/Login.js';
 import Admin from './rotas/Admin.js';
 import reportWebVitals from './reportWebVitals';
@@ -14,6 +13,7 @@ import Logout from './rotas/Logout';
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
+    padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
@@ -41,7 +41,7 @@ root.render(
         <Route path="/login" element={<Login />} />
         <Route path="/sair" element={<Logout />} />
 
-        <Route path="/unauthorized" element={<h1>Acesso não autorizado</h1>} />
+        <Route path="/unauthorized" element={<a href="/">Acesso não autorizado, Clique aqui para voltar!</a>} />
 
         <Route path="/" element={
           <PrivateRoute allowedRoles={['Professor', 'Aluno']}>
@@ -56,7 +56,7 @@ root.render(
         } />
 
         <Route path="/alunos" element={
-          <PrivateRoute allowedRoles={['Aluno']}>
+          <PrivateRoute allowedRoles={['Aluno', 'Professor']}>
             <HomeAlunos />
           </PrivateRoute>
         } />
@@ -64,11 +64,6 @@ root.render(
         <Route path="/admin" element={
           <PrivateRoute allowedRoles={['Professor']}>
             <Admin />
-          </PrivateRoute>
-        } />
-        <Route path="/perfil" element={
-          <PrivateRoute allowedRoles={['Professor', 'Aluno']}>
-            <Perfil />
           </PrivateRoute>
         } />
       </Routes>

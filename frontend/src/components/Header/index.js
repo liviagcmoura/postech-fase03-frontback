@@ -5,21 +5,27 @@ import { Link } from 'react-router-dom';
 import BotaoLogout from '../BotaoSair/BotaoSair';
 
 const HeaderContainer = styled.header`
-    background-color:rgb(25, 20, 23);
+    background-color:#efe1e1;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
 `
 
 function Header() {
     
     return (
         <HeaderContainer>
-            <Link to="/">
+            <Link to="/alunos" style={{
+                textDecoration: 'none',
+                color: 'inherit',
+            }}>
                 <Logo/>
             </Link>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}> 
             <MenuHeader/>
             <BotaoLogout />
+        </div>
         </HeaderContainer>
 
 
