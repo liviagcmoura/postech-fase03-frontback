@@ -9,7 +9,7 @@ A aplicação utiliza uma arquitetura em MVC no back-end, implementada com Node.
  - Clone o repositório na sua máquina
  - Instale as dependências do back-end e do front-end separadamente, com o comando `npm install`
  - Suba os servidores separadamente também, com `docker compose up` para o back-end (rodará na porta 3030) e `npm start` para o front-end (rodará na porta 3000)
- - Importe o arquivo `techChallenge..papeis.json` no banco de dados para obter os IDs
+ - Importe o arquivo `techChallenge.papeis.json` no banco de dados para obter os IDs de papeis de usuários, que serão importantes para criar novos usuários
 
 ## Arquitetura do projeto
 
