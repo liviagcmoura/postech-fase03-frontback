@@ -40,7 +40,7 @@ frontend/
 └── package.json             # Dependências e scripts
 ```
 
-### Fluxo da aplicação
+## Fluxo da aplicação
 
 ![Fluxo da aplicação](https://github.com/user-attachments/assets/df3f02c1-77a1-4c44-9b42-b6167d03cb1b)
 
@@ -49,8 +49,8 @@ frontend/
 > *A página de blogging não oferece as funcionalidades de usuário, como criar, editar ou deletar. Então, recomendamos criá-los via API, usando o Postman, por exemplo, ou diretamente no banco de dados. Para isso, envie um nome de usuário (`nome`), senha (`password`) e ID do papel de Aluno ou Professor (`role`), listados no JSON de papéis.*
 
 ## Desafios de desenvolvimento
+- **Conexão com API:** Enfrentamos dificuldades na configuração do Cors no back-end para podermos acessar a API pelo front-end. Demoramos a entender que o problema era a ordem correta do script de entrada das rotas usando o Cors, o que exigiu bastante pesquisa pelo Stack Overflow, ajuda de IA e de pessoas mais experientes.
+- **Estilização:** Os membros do grupo possuíam pouca familiaridade com CSS, também exigindo bastante pesquisa para manter um estilo coerente nas páginas, além de funcional.
+- **Padrões de projeto:** Desenvolver em grupo apresenta um desafio para manter a uniformidade do código. Também por conta do tempo, não conseguimos refatorar todo o projeto para deixá-lo mais organizado, o que acabou resultando em muitas duplicações de código e algumas incoerências de arquitetura. Resolver esses problemas será o nosso foco após a entrega.
 
-
-
-
-
+Esses desafios foram muito importantes para o desenvolvimento de cada membro da equipe ao nos colocar diante de situações próximas da realidade do dia a dia de uma pessoa desenvolvedora Full Stack. Saímos desse Tech Challenge mais preparados para lidar com alguns problemas comuns e com mais noção dos pontos que precisamos estudar e praticar mais.
