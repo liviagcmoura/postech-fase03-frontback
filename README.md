@@ -1,5 +1,5 @@
 ﻿# 🎓 Escola Avanço Blogging - Projeto Full Stack
- ![avanço (5)](https://github.com/user-attachments/assets/439cdda1-61d6-4a6c-a081-f52019a85edf)
+![Logo Escola Avanço)](https://github.com/user-attachments/assets/e81aa3e9-732c-4143-b495-47710bbbe543)
 
  ## 💻 Introdução
 No cenário educacional atual, a falta de ferramentas adequadas dificulta a publicação e o compartilhamento de conteúdos educacionais de forma centralizada e acessível. A aplicação Escola Avanço foi desenvolvida para enfrentar esse desafio, permitindo que professores da rede pública publiquem aulas de maneira intuitiva e tecnológica, enquanto os alunos têm acesso fácil e organizado a esses materiais.
