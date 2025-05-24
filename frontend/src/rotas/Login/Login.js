@@ -35,7 +35,7 @@ function Login() {
         const userRole =  decodedToken?.role;
       
 
-        window.location.href = userRole === 'Aluno' ? '/alunos' : '/';
+        window.location.href = userRole === 'Aluno' ? '/alunos' : '/home';
       } else {
         setError(data.message || 'Nome de usuário ou senha incorretos. Tente novamente.');
       }

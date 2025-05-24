@@ -45,7 +45,7 @@ root.render(
 
         <Route path="/" element={
           <PrivateRoute allowedRoles={['Professor', 'Aluno']}>
-            <Home />
+            <Login />
           </PrivateRoute>
         } />
 

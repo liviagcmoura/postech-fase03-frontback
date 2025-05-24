@@ -14,7 +14,7 @@ const HeaderContainer = styled.header`
 function HeaderAdmin() {
     return (
         <HeaderContainer>
-            <Link to="/" style={{
+            <Link to="/home" style={{
                 textDecoration: 'none',
                 color: 'inherit',
             }}>

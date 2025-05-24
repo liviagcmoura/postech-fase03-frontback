@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { getAulas } from "../servicos/Aulas";
+import { getAulasPrincipais } from "../servicos/Aulas";
 import Pesquisa from "../components/Pesquisa";
 import { Titulo } from "../components/Titulo";
 import HeaderAdmin from "../components/HeaderAdmin";
@@ -48,7 +48,7 @@ function Home() {
   }, []);
 
   async function fetchAulas() {
-    const todas = await getAulas();
+    const todas = await getAulasPrincipais();
     setAulas(todas);
     setAulasFiltradas([]); // limpa busca
   }
