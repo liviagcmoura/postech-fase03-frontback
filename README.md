@@ -4,7 +4,7 @@
  ## 💻 Introdução
 No cenário educacional atual, a falta de ferramentas adequadas dificulta a publicação e o compartilhamento de conteúdos educacionais de forma centralizada e acessível. A aplicação Escola Avanço foi desenvolvida para enfrentar esse desafio, permitindo que professores da rede pública publiquem aulas de maneira intuitiva e tecnológica, enquanto os alunos têm acesso fácil e organizado a esses materiais.
 
-A aplicação utiliza uma arquitetura em MVC no back-end, implementada com Node.js, MongoDB, e comunicação via REST APIs. Além disso, conta com containerização via Docker e automação de CI/CD com GitHub Actions, garantindo um ambiente escalável e consistente.
+A aplicação utiliza uma arquitetura em MVC no back-end, implementada com Node.js, MongoDB, e comunicação via REST APIs. Além disso, conta com containerização via Docker e automação de CI/CD com GitHub Actions, garantindo um ambiente escalável e consistente. O front-end foi construído utilizando React e conta com uma interface intuitiva e agradável.
 
  ## ⬆️ Para iniciar o projeto
  - Clone o repositório na sua máquina
